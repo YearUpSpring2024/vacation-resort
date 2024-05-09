@@ -1,42 +1,71 @@
 "use strict";
 
-//user input
-const userInputName = document.getElementById("nameInput").value;
-const userInputemail = document.getElementById("emailInput").value;
-const checkIn = new Date(document.getElementById("checkIn").value);
-const howManyAdults = parseFloat(document.getElementById("howManyAdults").value);
-const howManyNights = (parseFloatdocument.getElementById("howManyNights").value);
-const howManyKids = parseFloat(document.getElementById("howManyKids"));
-//all Buttons
-// radio
-const isKingSizeRadioBtn = document.getElementById("isKingSizeRadio").checked;
-const isQueenSizeRadioBtn = document.getElementById("isQueenSizeRadio").checked;
-const twoBedroomSuite = document.getElementById("twoBedroomSuite").checked;
-
-// discounts
-const seniorsDiscount = document.getElementById("seniorsDiscount").checked;
-const military = document.getElementById("military").checked;
-
-// const a_a_a_discount = document.getElementById("a_a_a_discount");
+// Submission
+const submit_btn = document.getElementById("submit_btn_boom");
 
 
-// submission
-const submit_btn = document.getElementById("submit_btn");
+const isKingSizeRadioBtn = document.getElementById("isKingSizeRadio");
+const isQueenSizeRadioBtn = document.getElementById("isQueenSizeRadio");
 
-// display the results
+// discount
+const seniorsDiscount = document.getElementById("seniorsDiscount");
+const military = document.getElementById("Military");
+
+// Display the results
 const originalRoomAmount = document.getElementById("originalRoomAmount");
 const discountAmount = document.getElementById("discountAmount");
 const roomPrice = document.getElementById("roomPrice");
 const tax = document.getElementById("tax");
 const pricePerDay = document.getElementById("pricePerDay");
 
-
-
 window.onload = function () {
-    submit_btn.onclick = buttonIsClicked
+    submit_btn.onclick = calculateStayCost;
+
 }
 
+function calculateStayCost() {
+    // User input
+    const isCheckedIn = new Date(checkIn.value);
+    const nights = parseFloat(howManyNights.value);
+    const isKingSize = isKingSizeRadioBtn.checked;
+    const isQueenSize = isQueenSizeRadioBtn.checked;
+    const isTwoBedroom = twoBedroomSuite.checked;
+    const isSeniorsDiscount = seniorsDiscount.checked;
+    const isMilitaryDiscount = military.checked;
 
-function buttonIsClicked() {
-    let howmanyDay = 
+    // Room rate calculation
+    let normalRate = 0;
+    if (isKingSize) {
+        normalRate = 250;
+    } else if (isQueenSize) {
+        normalRate = 150;
+    } else if (isTwoBedroom) {
+        normalRate = 350;
+    }
+
+    if (isCheckedIn.getMonth() >= 5 && isCheckedIn.getMonth() <= 7) {
+        normalRate += 100;
+    }
+
+    const roomAmount = normalRate * nights;
+
+    // Discount calculation
+    let discount = 0;
+    if (isSeniorsDiscount) {
+        discount += roomAmount * 0.1;
+    }
+    if (isMilitaryDiscount) {
+        discount += roomAmount * 0.2;
+    }
+
+    // Display results
+    disPlayResults(roomAmount, discount);
+}
+
+function disPlayResults(roomAmount, discount) {
+    originalRoomAmount.innerText = `${roomAmount.toFixed(2)}`;
+    discountAmount.innerText = `${discount.toFixed(2)}`;
+    roomPrice.innerText = `${(roomAmount - discount).toFixed(2)}`;
+    tax.innerText = `${(0.12 * roomAmount).toFixed(2)}`;
+    pricePerDay.innerText = `${(roomAmount / parseFloat(howManyNights.value)).toFixed(2)}`;
 }

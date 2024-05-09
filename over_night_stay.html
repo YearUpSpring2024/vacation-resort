@@ -14,7 +14,46 @@
 
 <body>
     <header>
-
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html">Costas D'este Beach Resort and spa</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./over_night_stay.html">Longterm-Plan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./activities.html">Activities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./dining.html">Dinings</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="./offers.html" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Offers
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- <li><a class="dropdown-item" href="./events.html">Events</a></li> -->
+                                <li><a class="dropdown-item" href="./rent_a_car.html">Rent a Car</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="./activities.html">Activities</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
         <div class="container mt-5">
@@ -79,7 +118,7 @@
                             <label for="message" class="form-label" aria-label="">check-in Date</label>
                             <!-- <textarea class="form-control" id="message" rows="3"
                                 placeholder="Enter your message"></textarea> -->
-                            <input id="userDate" class="form-control" type="date" required />
+                            <input id="checkIn" class="form-control" type="date" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="">How Many nights</label>
@@ -125,7 +164,7 @@
 
                         </div>
 
-                        <input id="submit_btn" type="submit" class="btn btn-primary"></input>
+                        <input id="submit_btn_boom" type="submit" class="btn btn-primary"></input>
                     </form>
                 </div>
             </div>
@@ -163,6 +202,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="./scripts/overNight.js"></script>
 </body>
 
 </html>
