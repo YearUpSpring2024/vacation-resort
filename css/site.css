@@ -1,0 +1,22 @@
+
+h1{
+    font-size: 9em;
+}
+h3{
+    margin-bottom: 150px;
+}
+
+.small-img{
+    width: 100%;
+    height: auto;
+    display: flex;
+    display: inline;
+    justify-content: space-evenly;
+}
+.jumbotron{
+   position: relative;
+   width: 100%;
+   height: auto;
+   border: 3px solid black;
+   background-color: antiquewhite;
+}
